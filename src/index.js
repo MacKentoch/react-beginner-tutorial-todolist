@@ -27,7 +27,7 @@ class App extends React.Component {
 
         <ul>
           {this.state.list.map((item, index) => {
-            <li key={index}>{item}</li>;
+            return <li key={index}>{item}</li>;
           })}
         </ul>
       </div>
