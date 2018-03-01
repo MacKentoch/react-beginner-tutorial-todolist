@@ -6,10 +6,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      wrote: '',
       list: [],
     };
 
     this.onNewItemChange = this.onNewItemChange.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
 
   render() {
@@ -19,6 +21,7 @@ class App extends React.Component {
         <div>
           <span>ajouter: </span>
           <input type="text" onChange={this.onNewItemChange} />
+          <button onClick={this.addItem}>ajouter</button>
         </div>
         <br />
 
@@ -29,6 +32,18 @@ class App extends React.Component {
         </ul>
       </div>
     );
+  }
+
+  onNewItemChange(event) {
+    this.setState({ wrote: event.target.value });
+  }
+
+  addItem() {
+    const previousList = this.state.list;
+    const newItem = this.state.wrote;
+    const newList = [...previousList, newItem];
+
+    this.setState({ list: newList });
   }
 }
 
